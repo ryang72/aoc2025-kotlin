@@ -1,21 +1,46 @@
+import kotlin.math.abs
+
 fun main() {
     fun part1(input: List<String>): Int {
-        return input.size
+        var ans = 0
+        var pos = 50
+
+        for (line in input) {
+            val dist = line.drop(1).toInt()
+            when (line[0]) {
+                'L' -> pos -= dist
+                'R' -> pos += dist
+            }
+            pos %= 100
+            if (pos == 0) ans++
+        }
+
+        return ans
     }
 
     fun part2(input: List<String>): Int {
-        return input.size
+        var ans = 0
+        var pos = 50
+
+        for (line in input) {
+            val dist = line.drop(1).toInt()
+            val notFromZero = pos != 0
+            when (line[0]) {
+                'L' -> pos -= dist
+                'R' -> pos += dist
+            }
+            if (pos == 0) ans++
+            if (pos < 0 && notFromZero) ans++
+            ans += abs(pos) / 100
+            pos = pos.mod(100)
+        }
+
+        return ans
     }
 
-    // Test if implementation meets criteria from the description, like:
-    check(part1(listOf("test_input")) == 1)
-
-    // Or read a large test input from the `src/Day01_test.txt` file:
     val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
-
-    // Read the input from the `src/Day01.txt` file.
     val input = readInput("Day01")
-    part1(input).println()
-    part2(input).println()
+
+    println("Part 1 test input: ${part1(testInput)} input: ${part1(input)}")
+    println("Part 2 test input: ${part2(testInput)} input: ${part2(input)}")
 }
