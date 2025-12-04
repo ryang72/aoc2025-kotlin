@@ -1,6 +1,7 @@
 import java.util.LinkedList
 
 fun main() {
+
     fun getValidAdj(x: Int, y: Int, xMax: Int, yMax: Int): List<Pair<Int, Int>> {
         return sequenceOf(
             Pair(-1, -1),
