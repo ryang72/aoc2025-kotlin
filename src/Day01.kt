@@ -38,9 +38,9 @@ fun main() {
         return ans
     }
 
-    val testInput = readInput("Day01_test")
-    val input = readInput("Day01")
-
-    println("Part 1 test input: ${part1(testInput)} input: ${part1(input)}")
-    println("Part 2 test input: ${part2(testInput)} input: ${part2(input)}")
+    /**
+     * 1: test -> 3 (1ms) | input -> 1040 (1ms)
+     * 2: test -> 6 (0ms) | input -> 6027 (0ms)
+     */
+    runAndTime(1, ::part1, ::part2)
 }

@@ -14,9 +14,9 @@ fun main() {
         yield(null)
     }
 
-    fun part1(input: String): BigDecimal {
+    fun part1(input: List<String>): BigDecimal {
         val invalidIds = HashSet<BigDecimal>()
-        val ranges = input.split(',')
+        val ranges = input[0].split(',')
         for (range in ranges) {
             val (lhs, rhs) = range.split('-')
             for (digits in lhs.length..rhs.length)
@@ -26,9 +26,9 @@ fun main() {
         return invalidIds.sumOf { it }
     }
 
-    fun part2(input: String): BigDecimal {
+    fun part2(input: List<String>): BigDecimal {
         val invalidIds = HashSet<BigDecimal>()
-        val ranges = input.split(',')
+        val ranges = input[0].split(',')
         for (range in ranges) {
             val (lhs, rhs) = range.split('-')
             for (digits in lhs.length..rhs.length)
@@ -39,9 +39,9 @@ fun main() {
         return invalidIds.sumOf { it }
     }
 
-    val testInput = readInput("Day02_test")
-    val input = readInput("Day02")
-
-    println("Part 1 test input: ${part1(testInput[0])} input: ${part1(input[0])}")
-    println("Part 2 test input: ${part2(testInput[0])} input: ${part2(input[0])}")
+    /**
+     * 1: test -> 1227775554 (13ms) | input -> 9188031749 (11ms)
+     * 2: test -> 4174379265 (2ms) | input -> 11323661261 (3ms)
+     */
+    runAndTime(2, ::part1, ::part2)
 }

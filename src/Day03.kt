@@ -32,4 +32,10 @@ fun main() {
 
     println("Part 1 test input: ${part1(testInput)} input: ${part1(input)}")
     println("Part 2 test input: ${part2(testInput)} input: ${part2(input)}")
+
+    /**
+     * 1: test -> 357 (0ms) | input -> 17430 (6ms)
+     * 2: test -> 3121910778619 (0ms) | input -> 171975854269367 (9ms)
+     */
+    runAndTime(3, ::part1, ::part2)
 }
