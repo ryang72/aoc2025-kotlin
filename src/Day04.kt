@@ -3,15 +3,7 @@ import java.util.LinkedList
 fun main() {
 
     fun getValidAdj(x: Int, y: Int, xMax: Int, yMax: Int): List<Pair<Int, Int>> {
-        return sequenceOf(
-            Pair(-1, -1),
-            Pair(-1, 0),
-            Pair(-1, 1),
-            Pair(0, -1),
-            Pair(0, 1),
-            Pair(1, -1),
-            Pair(1, 0),
-            Pair(1, 1))
+        return sequenceOf(Pair(-1, -1), Pair(-1, 0), Pair(-1, 1), Pair(0, -1), Pair(0, 1), Pair(1, -1), Pair(1, 0), Pair(1, 1))
             .map { Pair(it.first + x, it.second + y) }
             .filter { it.first in 0..<xMax && it.second in 0..<yMax }
             .toList()
