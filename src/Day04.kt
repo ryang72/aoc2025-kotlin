@@ -49,18 +49,18 @@ fun main() {
             .toList()
 
         var totalRolls = 0;
-        val toBeCleaned = LinkedList<Pair<Int, Int>>()
+        val propagateRemoval = LinkedList<Pair<Int, Int>>()
         for (x in 0..<map.size)
             for (y in 0..<map[x].size)
                 if (map[x][y] == "@") {
                     val adjRolls = getValidAdj(x, y, map.size, map[x].size)
                         .count { map[it.first][it.second] != "." }
                     map[x][y] = adjRolls.toString()
-                    if (adjRolls < 4) toBeCleaned.add(Pair(x, y))
+                    if (adjRolls < 4) propagateRemoval.add(Pair(x, y))
                 }
 
-        while (toBeCleaned.isNotEmpty()) {
-            val (x, y) = toBeCleaned.pop()
+        while (propagateRemoval.isNotEmpty()) {
+            val (x, y) = propagateRemoval.pop()
             if (map[x][y] == ".") continue
             map[x][y] = "."; totalRolls++
 
@@ -68,7 +68,7 @@ fun main() {
                 if (map[adjX][adjY] != ".") {
                     val decremented = map[adjX][adjY].toInt() - 1
                     map[adjX][adjY] = decremented.toString()
-                    if (decremented < 4) toBeCleaned.add(Pair(adjX, adjY))
+                    if (decremented < 4) propagateRemoval.add(Pair(adjX, adjY))
                 }
         }
 
