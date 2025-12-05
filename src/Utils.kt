@@ -38,3 +38,14 @@ fun runAndTime(day: Int, vararg solutions: (List<String>) -> Any) {
         println("${idx + 1}: test -> $testAns (${testTimeTaken.inWholeMilliseconds}ms) | input -> $realAns (${realTimeTaken.inWholeMilliseconds}ms)")
     }
 }
+
+fun runAndTimeTestOnly(day: Int, vararg solutions: (List<String>) -> Any) {
+    val testInput = readInput("Day${DECIMAL_FORMAT.format(day)}_test")
+
+    for ((idx, solution) in solutions.withIndex()) {
+        var testAns: Any
+        val testTimeTaken = measureTime { testAns = solution(testInput) }
+
+        println("${idx + 1}: test -> $testAns (${testTimeTaken.inWholeMilliseconds}ms)")
+    }
+}
