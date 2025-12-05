@@ -1,4 +1,5 @@
 fun main() {
+
     fun part1(input: List<String>): Int {
         val ranges = mutableSetOf<Pair<Long,Long>>()
         var seenEmpty = false
@@ -39,7 +40,6 @@ fun main() {
                 when {
                     line.first < range.first && range.second < line.second -> {
                         ranges.remove(Pair(range.first, range.second))
-                        maybeRangeToAdd = Pair(line.first, line.second)
                         break
                     }
                     line.first < range.first && line.second in range.first..range.second -> {
